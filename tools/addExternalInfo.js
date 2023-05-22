@@ -118,7 +118,6 @@ async function main() {
   var crunchbaseEntries;
   var savedCrunchbaseEntries;
 
-  console.log(projectPath)
 
   if (settings.global.skip_crunchbase) {
     console.info('This project does not fetch crunchbase entries');

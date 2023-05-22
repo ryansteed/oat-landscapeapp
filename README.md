@@ -5,6 +5,12 @@ After following instal instructions,
 
 `PROJECT_PATH=../oat-landscape npm run build` to run the server
 
+Sometimes in between, need a harder reset:
+
+`PROJECT_PATH=../oat-landscape npm run update` to update processed landscape
+
+To get rid of errors fro mthe old ones, `PROJECT_PATH=../oat-landscape npm run prune`
+
 For Github scraping, could add that code back in
 
 Potentially the original landscapeapp could be used, only commneted out some stesp fro simplicity. Global settings banning crunchbase should suffice
