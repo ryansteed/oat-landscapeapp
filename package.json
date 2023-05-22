@@ -75,7 +75,7 @@
     "sitemap": "^7.1.1",
     "svg-autocrop": "^2.0.41",
     "traverse": "0.6.6",
-    "yarn": "^1.22.18"
+    "yarn": "1.22.19"
   },
   "keywords": [
     "landscape",

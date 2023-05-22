@@ -40,6 +40,7 @@ function reportOptions() {
      Use cached github basic stats: ${useGithubCache}
      Use cached github start dates: ${useGithubStartDatesCache}
      Use cached best practices: ${useBestPracticesCache}
+     Project path: ${projectPath}
     `);
 }
 if (key.toLowerCase() === 'easy') {
@@ -116,6 +117,9 @@ async function main() {
   await checkVersion();
   var crunchbaseEntries;
   var savedCrunchbaseEntries;
+
+  console.log(projectPath)
+
   if (settings.global.skip_crunchbase) {
     console.info('This project does not fetch crunchbase entries');
     savedCrunchbaseEntries = [];
@@ -140,17 +144,19 @@ async function main() {
 
   console.info('Fetching github entries');
   const savedGithubEntries = getProcessedRepos();
-  const githubEntries = await fetchGithubEntries({
-    cache: savedGithubEntries,
-    preferCache: useGithubCache
-  });
+  // const githubEntries = await fetchGithubEntries({
+  //   cache: savedGithubEntries,
+  //   preferCache: useGithubCache
+  // });
+  const githubEntries = null;
 
   console.info('Fetching start date entries');
   const savedStartDateEntries = await getProcessedReposStartDates();
-  const startDateEntries = await fetchStartDateEntries({
-    cache: savedStartDateEntries,
-    preferCache: useGithubStartDatesCache
-  });
+  // const startDateEntries = await fetchStartDateEntries({
+  //   cache: savedStartDateEntries,
+  //   preferCache: useGithubStartDatesCache
+  // });
+  const startDateEntries = null;
 
   console.info('Fetching images');
   const savedImageEntries = await extractSavedImageEntries();
@@ -165,12 +171,12 @@ async function main() {
 
   console.info('Fetching last tweet dates');
   const savedTwitterEntries = await extractSavedTwitterEntries();
-
   // const twitterEntries = await fetchTwitterEntries({
     // cache: savedTwitterEntries,
     // preferCache: useTwitterCache,
     // crunchbaseEntries: crunchbaseEntries
   // });
+  const twitterEntries = null;
 
   if (hasFatalErrors()) {
     console.info('Reporting fatal errors');
@@ -181,14 +187,16 @@ async function main() {
 
   console.info('Fetching best practices');
   const savedBestPracticeEntries = await extractSavedBestPracticeEntries();
-  const fetchBestPracticeEntries = useBestPracticesCache ? fetchBestPracticeEntriesWithIndividualUrls : fetchBestPracticeEntriesWithFullScan;
-  const bestPracticeEntries = await fetchBestPracticeEntries({
-    cache: savedBestPracticeEntries,
-    preferCache: useBestPracticesCache
-  });
+  // const fetchBestPracticeEntries = useBestPracticesCache ? fetchBestPracticeEntriesWithIndividualUrls : fetchBestPracticeEntriesWithFullScan;
+  // const bestPracticeEntries = await fetchBestPracticeEntries({
+  //   cache: savedBestPracticeEntries,
+  //   preferCache: useBestPracticesCache
+  // });
+  const bestPracticeEntries = null;
 
   console.info('Fetching CLOMonitor data');
-  const cloEntries = await fetchCloEntries();
+  // const cloEntries = await fetchCloEntries();
+  const cloEntries = null;
 
   const tree = traverse(landscape);
   console.info('Processing the tree');
